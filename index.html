@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante Renascer - Comida Caseira</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="cabecalho">
+        <div class="container">
+            <h1 class="logo">Restaurante Renascer</h1>
+            <nav class="navegacao">
+                <a href="#inicio">Início</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#cardapio">Cardápio</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#contato">Contato</a>
+            </nav>
+            <button class="botao-menu" onclick="alternarMenu()">☰</button>
+        </div>
+    </header>
+
+    <!-- Menu Mobile -->
+    <nav class="menu-mobile" id="menuMobile">
+        <a href="#inicio" onclick="fecharMenu()">Início</a>
+        <a href="#sobre" onclick="fecharMenu()">Sobre</a>
+        <a href="#cardapio" onclick="fecharMenu()">Cardápio</a>
+        <a href="#galeria" onclick="fecharMenu()">Galeria</a>
+        <a href="#contato" onclick="fecharMenu()">Contato</a>
+    </nav>
+
+    <!-- Seção Hero -->
+    <section id="inicio" class="hero">
+        <div class="hero-conteudo">
+            <h2 class="hero-titulo">Restaurante Renascer</h2>
+            <p class="hero-subtitulo">Comida caseira que acolhe</p>
+            <a href="#cardapio" class="botao-primario">Ver Cardápio</a>
+        </div>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <h2 class="titulo-secao">Nosso Restaurante</h2>
+            <div class="grade-sobre">
+                <div class="card-sobre">
+                    <div class="icone">🍽️</div>
+                    <h3>Comida Caseira</h3>
+                    <p>Pratos preparados com carinho e ingredientes frescos todos os dias</p>
+                </div>
+                <div class="card-sobre">
+                    <div class="icone">🏠</div>
+                    <h3>Ambiente Acolhedor</h3>
+                    <p>Espaço familiar e confortável para toda a família</p>
+                </div>
+                <div class="card-sobre">
+                    <div class="icone">⏰</div>
+                    <h3>Horário Flexível</h3>
+                    <p>Aberto todos os dias para almoço e jantar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Cardápio -->
+    <section id="cardapio" class="cardapio">
+        <div class="container">
+            <h2 class="titulo-secao">Nosso Cardápio</h2>
+            
+            <!-- Abas do Cardápio -->
+            <div class="abas-cardapio">
+                <button class="aba-botao ativo" onclick="mostrarCategoria('pratos')">Pratos Principais</button>
+                <button class="aba-botao" onclick="mostrarCategoria('sobremesas')">Sobremesas</button>
+                <button class="aba-botao" onclick="mostrarCategoria('bebidas')">Bebidas</button>
+                <button class="aba-botao" onclick="mostrarCategoria('acompanhamentos')">Acompanhamentos</button>
+            </div>
+
+            <!-- Pratos Principais -->
+            <div id="pratos" class="categoria-cardapio ativo">
+                <div class="grade-cardapio">
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Feijoada Completa">
+                        <h3>Feijoada Completa</h3>
+                        <p>Feijoada tradicional com carnes selecionadas</p>
+                        <span class="preco">R$ 28,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Picanha na Brasa">
+                        <h3>Picanha na Brasa</h3>
+                        <p>Picanha grelhada com arroz, feijão e vinagrete</p>
+                        <span class="preco">R$ 35,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Frango Assado">
+                        <h3>Frango Assado</h3>
+                        <p>Frango temperado e assado com batatas rústicas</p>
+                        <span class="preco">R$ 24,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Peixe Grelhado">
+                        <h3>Peixe Grelhado</h3>
+                        <p>Filé de tilápia grelhado com legumes</p>
+                        <span class="preco">R$ 29,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Strogonoff">
+                        <h3>Strogonoff de Carne</h3>
+                        <p>Strogonoff cremoso com arroz e batata palha</p>
+                        <span class="preco">R$ 26,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Lasanha">
+                        <h3>Lasanha à Bolonhesa</h3>
+                        <p>Lasanha tradicional com molho bolonhesa</p>
+                        <span class="preco">R$ 25,90</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sobremesas -->
+            <div id="sobremesas" class="categoria-cardapio">
+                <div class="grade-cardapio">
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Pudim">
+                        <h3>Pudim de Leite</h3>
+                        <p>Pudim caseiro com calda de caramelo</p>
+                        <span class="preco">R$ 8,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Brigadeiro">
+                        <h3>Brigadeiro Gourmet</h3>
+                        <p>Brigadeiro cremoso (3 unidades)</p>
+                        <span class="preco">R$ 6,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Mousse">
+                        <h3>Mousse de Maracujá</h3>
+                        <p>Mousse leve e refrescante</p>
+                        <span class="preco">R$ 7,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Bolo de Chocolate">
+                        <h3>Bolo de Chocolate</h3>
+                        <p>Fatia de bolo de chocolate com cobertura</p>
+                        <span class="preco">R$ 9,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Torta de Limão">
+                        <h3>Torta de Limão</h3>
+                        <p>Torta refrescante com merengue</p>
+                        <span class="preco">R$ 10,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Pavê">
+                        <h3>Pavê de Chocolate</h3>
+                        <p>Pavê cremoso com biscoito champagne</p>
+                        <span class="preco">R$ 8,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Sorvete">
+                        <h3>Sorvete Artesanal</h3>
+                        <p>2 bolas de sorvete (sabores variados)</p>
+                        <span class="preco">R$ 7,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Doce de Leite">
+                        <h3>Doce de Leite Caseiro</h3>
+                        <p>Doce de leite tradicional (porção)</p>
+                        <span class="preco">R$ 6,90</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bebidas -->
+            <div id="bebidas" class="categoria-cardapio">
+                <div class="grade-cardapio">
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Suco de Laranja">
+                        <h3>Suco de Laranja</h3>
+                        <p>Suco natural espremido na hora</p>
+                        <span class="preco">R$ 7,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Suco de Limão">
+                        <h3>Suco de Limão</h3>
+                        <p>Limonada natural refrescante</p>
+                        <span class="preco">R$ 6,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Suco de Maracujá">
+                        <h3>Suco de Maracujá</h3>
+                        <p>Suco natural de maracujá</p>
+                        <span class="preco">R$ 7,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Refrigerante">
+                        <h3>Refrigerante Lata</h3>
+                        <p>Coca-Cola, Guaraná ou Fanta (350ml)</p>
+                        <span class="preco">R$ 5,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Água">
+                        <h3>Água Mineral</h3>
+                        <p>Água mineral sem gás (500ml)</p>
+                        <span class="preco">R$ 3,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Café">
+                        <h3>Café Expresso</h3>
+                        <p>Café espresso tradicional</p>
+                        <span class="preco">R$ 4,90</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Acompanhamentos -->
+            <div id="acompanhamentos" class="categoria-cardapio">
+                <div class="grade-cardapio">
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Arroz Branco">
+                        <h3>Arroz Branco</h3>
+                        <p>Arroz branco soltinho</p>
+                        <span class="preco">R$ 6,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Feijão">
+                        <h3>Feijão Preto</h3>
+                        <p>Feijão preto bem temperado</p>
+                        <span class="preco">R$ 6,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Farofa">
+                        <h3>Farofa</h3>
+                        <p>Farofa crocante com bacon</p>
+                        <span class="preco">R$ 5,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Batata Frita">
+                        <h3>Batata Frita</h3>
+                        <p>Porção de batata frita sequinha</p>
+                        <span class="preco">R$ 12,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Salada">
+                        <h3>Salada Verde</h3>
+                        <p>Mix de folhas frescas</p>
+                        <span class="preco">R$ 8,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Vinagrete">
+                        <h3>Vinagrete</h3>
+                        <p>Vinagrete tradicional brasileiro</p>
+                        <span class="preco">R$ 4,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Purê">
+                        <h3>Purê de Batata</h3>
+                        <p>Purê cremoso e suave</p>
+                        <span class="preco">R$ 7,90</span>
+                    </div>
+                    <div class="card-item">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Legumes">
+                        <h3>Legumes Refogados</h3>
+                        <p>Mix de legumes frescos refogados</p>
+                        <span class="preco">R$ 8,90</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Galeria -->
+    <section id="galeria" class="galeria">
+        <div class="container">
+            <h2 class="titulo-secao">Nosso Ambiente</h2>
+            <div class="grade-galeria">
+                <img src="/placeholder.svg?height=300&width=400" alt="Interior do restaurante">
+                <img src="/placeholder.svg?height=300&width=400" alt="Buffet">
+                <img src="/placeholder.svg?height=300&width=400" alt="Mesas">
+                <img src="/placeholder.svg?height=300&width=400" alt="Fachada">
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contato" class="contato">
+        <div class="container">
+            <h2 class="titulo-secao">Entre em Contato</h2>
+            <div class="grade-contato">
+                <div class="info-contato">
+                    <h3>📍 Endereço</h3>
+                    <p>Rua das Flores, 123<br>Centro - São Paulo/SP</p>
+                </div>
+                <div class="info-contato">
+                    <h3>📞 Telefone</h3>
+                    <p>(11) 3456-7890<br>(11) 98765-4321</p>
+                </div>
+                <div class="info-contato">
+                    <h3>⏰ Horário</h3>
+                    <p>Segunda a Sábado: 11h - 15h / 18h - 22h<br>Domingo: 11h - 16h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="rodape">
+        <div class="container">
+            <p>&copy; 2026 Restaurante Renascer. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
