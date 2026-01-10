@@ -68,33 +68,76 @@ document.addEventListener("click", (evento) => {
 // --- Lightbox/Modal da galeria ---
 ;(function () {
   const modal = document.getElementById("modalGaleria")
-  const modalImg = document.getElementById("modalImagem")
+  const modalMedia = modal ? modal.querySelector("#modalMedia") : null
   const btnFechar = modal ? modal.querySelector(".modal-fechar") : null
 
   if (!modal) return
 
-  function abrirModal(src, alt) {
-    modalImg.src = src
-    modalImg.alt = alt || "Imagem da galeria"
+  function abrirModalImagem(src, alt) {
+    if (!modalMedia) return
+    modalMedia.innerHTML = ''
+    const img = document.createElement('img')
+    img.src = src
+    img.alt = alt || 'Imagem da galeria'
+    img.style.maxWidth = '100%'
+    img.style.maxHeight = '85vh'
+    modalMedia.appendChild(img)
     modal.classList.add("ativo")
     modal.setAttribute("aria-hidden", "false")
     document.body.style.overflow = "hidden"
   }
 
-  function fecharModal() {
-    modal.classList.remove("ativo")
-    modal.setAttribute("aria-hidden", "true")
-    modalImg.src = ""
-    document.body.style.overflow = ""
+  function abrirModalVideo(src, alt) {
+    if (!modalMedia) return
+    modalMedia.innerHTML = ''
+    const video = document.createElement('video')
+    video.src = src
+    video.controls = true
+    video.setAttribute('aria-label', alt || 'Vídeo da galeria')
+    video.style.maxWidth = '100%'
+    video.style.maxHeight = '85vh'
+    modalMedia.appendChild(video)
+    modal.classList.add("ativo")
+    modal.setAttribute("aria-hidden", "false")
+    document.body.style.overflow = "hidden"
   }
 
-  // Abrir ao clicar em qualquer imagem da grade-galeria
+  // Abrir ao clicar em qualquer imagem da grade-galeria (comportamento original)
   document.querySelectorAll(".grade-galeria img").forEach((img) => {
     img.style.cursor = "pointer"
     img.addEventListener("click", (e) => {
-      abrirModal(e.currentTarget.src, e.currentTarget.alt)
+      abrirModalImagem(e.currentTarget.src, e.currentTarget.alt)
     })
   })
+
+  // Abrir vídeo no modal; não reproduzir na grade — reprodução só dentro do modal quando usuário apertar play
+  document.querySelectorAll(".grade-galeria video").forEach((vid) => {
+    vid.style.cursor = 'pointer'
+    // garantir que o vídeo na grade não reproduza automaticamente
+    try { vid.pause() } catch (err) {}
+    vid.addEventListener('click', (e) => {
+      // Evita que o próprio elemento de grade inicie reprodução
+      try { e.currentTarget.pause() } catch (err) {}
+      abrirModalVideo(e.currentTarget.currentSrc || e.currentTarget.src, e.currentTarget.getAttribute('alt'))
+    })
+  })
+
+  // Ao fechar, garantir que qualquer mídia do modal seja parada e removida
+  function limparMediaModal() {
+    if (!modalMedia) return
+    const video = modalMedia.querySelector('video')
+    if (video) {
+      try { video.pause() } catch (err) {}
+    }
+    modalMedia.innerHTML = ''
+  }
+
+  function fecharModal() {
+    limparMediaModal()
+    modal.classList.remove('ativo')
+    modal.setAttribute('aria-hidden', 'true')
+    document.body.style.overflow = ''
+  }
 
   // Fechar com botão
   if (btnFechar) btnFechar.addEventListener("click", fecharModal)
