@@ -14,7 +14,7 @@ function fecharMenu() {
 }
 
 // Função para mostrar categoria do cardápio
-function mostrarCategoria(categoriaId) {
+function mostrarCategoria(categoriaId, botao) {
   // Remove a classe 'ativo' de todas as categorias
   const todasCategorias = document.querySelectorAll(".categoria-cardapio")
   todasCategorias.forEach((categoria) => {
@@ -34,7 +34,7 @@ function mostrarCategoria(categoriaId) {
   }
 
   // Adiciona a classe 'ativo' ao botão clicado
-  event.target.classList.add("ativo")
+  botao.classList.add("ativo")
 }
 
 // Scroll suave para links âncora
